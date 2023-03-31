@@ -8,6 +8,8 @@ export const useGetPokemonList = () => {
     [QUERY_KEYS.GET_POKEMON],
     ({ pageParam = 0 }) => getPokemon(pageParam),
     {
+      staleTime: 10000,
+      cacheTime: 10000,
       getNextPageParam: (lastPage) => {
         return lastPage.nextPage;
       }
@@ -20,7 +22,11 @@ export const useGetPokemonList = () => {
 export const useGetDetailPokemon = (id: string) => {
   const data = useQuery(
     [QUERY_KEYS.GET_DETAIL_POKEMON, id],
-    () => getDetailPokemon(id)
+    () => getDetailPokemon(id),
+    {
+      staleTime: 10000,
+      cacheTime: 10000,
+    }
   );
   return data;
 };
@@ -29,7 +35,11 @@ export const useGetDetailPokemon = (id: string) => {
 export const useGetPokemonEvolution = (id: string) => {
   const data = useQuery(
     [QUERY_KEYS.GET_POKEMON_EVOLUTION, id],
-    () => getPokemonEvolution(id)
+    () => getPokemonEvolution(id),
+    {
+      staleTime: 10000,
+      cacheTime: 10000,
+    }
   );
 
   return data;
@@ -39,7 +49,11 @@ export const useGetPokemonEvolution = (id: string) => {
 export const useGetPokemonSpecies = (id: string) => {
   const data = useQuery(
     [QUERY_KEYS.GET_POKEMON_SPECIES, id],
-    () => getPokemonSpecies(id)
+    () => getPokemonSpecies(id),
+    {
+      staleTime: 10000,
+      cacheTime: 10000,
+    }
   );
 
   return data;
